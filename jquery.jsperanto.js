@@ -207,6 +207,14 @@
 
 					currentLang = loadedLang;
 					o.setDollarT && !$.t && ($.t = translate); // Shortcut
+					o.setDollarT && !$.T && ($.T = function(key, options) {
+						var s = translate(key, options);
+						return s.charAt(0).toUpperCase() + s.substr(1);
+					}); // Shortcut + first letter in uppercase
+					o.setDollarT && !$.TT && ($.TT = function(key, options) {
+						var s = translate(key, options);
+						return s.toUpperCase();
+					}); // Shortcut + string in uppercase
 					callback(translate);
 
 				});
